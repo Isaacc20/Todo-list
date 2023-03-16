@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Icofont/fontawesome-free-6.2.1-web/css/all.css">
+    <title>Document</title>
+    <style>
+        form input{
+            border: 1px solid black;
+        }
+        .el{
+            display: none;
+        }
+        form{
+            width: 100%;
+            margin-inline: 20%;
+        }
+        @media (max-width: 900px) {
+            form{
+                margin-inline: 15%;
+            }
+        }
+        @media (max-width: 800px) {
+            form{
+                margin-inline: 10%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-primary text-center w-100 d-grid align-items-center">
+    <h1 class="w-100 text-primary bg-light py-2 mb-3 mt-5">Todo list</h1>
+    <main class="d-flex justify-content-center align-items-center h-75">
+        <form action="" class="bg-light rounded-4 my-2 p-4">
+            <div id="newtask" class="d-flex w-100 gap-3">
+                <input id="write" class="bg-light rounded-1 p-2 w-75" type="text" required>
+                <button onclick="apply()" type="button" class="btn bg-primary text-light p3 w-25">Apply</button>
+            </div>
+            <div id="declare" class="py-3 w-100"></div>
+        </form>
+    </main>
+</body>
+</html>
+
+<script>
+
+    let myarr = document.getElementById("write");
+    let clare = document.getElementById("declare");
+    let show = [];
+    function each() {
+        clare.innerHTML = ""
+        show.forEach((element, index)=>{
+        clare.innerHTML += `<h5 id='del' class = 'bg-info d-flex align-items-stretch justify-content-between m-2 p-3'>
+            ${element}
+            <button class='btn btn-danger delete' type='button' onclick="del(${index})">&times;</button>
+            </h5>`
+        })
+    }
+    // FUNCTION FOR ADDING A TODO
+    function apply() {
+        show.push(myarr.value);
+        each()
+        console.log(show);
+    }
+    // FUNCTION FOR DELETING A TODO
+    function del(index) {
+        console.log(index);
+        show.splice(index, 1)
+        console.log(show);
+        each()
+    }
+    
+</script>
